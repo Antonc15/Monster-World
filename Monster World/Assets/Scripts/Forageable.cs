@@ -6,10 +6,15 @@ using UnityEngine;
 public class Forageable : MonoBehaviour
 {
     // Public Variables \\ 
-    [Header("General")]
+    [Header("Click Settings")]
     public int minClicks = 3;
     public int maxClicks = 5;
     public bool roatateOnClick = false;
+
+    [Header("Pitch Settings")]
+    public float minPitch = 1;
+    public float maxPitch = 1;
+    public bool onlyPitchForClick = false;
 
     [Header("Audio Clips")]
     public GameObject clickSound;
@@ -46,6 +51,11 @@ public class Forageable : MonoBehaviour
                 {
                     GameObject harvestObject = Instantiate(harvestSound, transform.position, Quaternion.identity);
                     harvestObject.transform.parent = FindObjectOfType<AudioHandler>().transform;
+
+                    if (!onlyPitchForClick)
+                    {
+                        harvestObject.GetComponent<AudioSource>().pitch = Random.Range(minPitch, maxPitch);
+                    }
                 }
             }
             else
@@ -57,6 +67,8 @@ public class Forageable : MonoBehaviour
                 {
                     GameObject clickObject = Instantiate(clickSound, transform.position, Quaternion.identity);
                     clickObject.transform.parent = FindObjectOfType<AudioHandler>().transform;
+
+                    clickObject.GetComponent<AudioSource>().pitch = Random.Range(minPitch, maxPitch);
                 }
             }
         }

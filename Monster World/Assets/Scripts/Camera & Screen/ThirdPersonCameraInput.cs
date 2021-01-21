@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ThirdPersonCameraInput : MonoBehaviour
@@ -9,30 +10,42 @@ public class ThirdPersonCameraInput : MonoBehaviour
 
     float xAxisSpeed;
     float yAxisSpeed;
+    CustomCursor cursor;
 
     void Start()
     {
         yAxisSpeed = cinemachine.m_YAxis.m_MaxSpeed;
         xAxisSpeed = cinemachine.m_XAxis.m_MaxSpeed;
-
-        cinemachine.m_YAxis.m_MaxSpeed = 0;
-        cinemachine.m_XAxis.m_MaxSpeed = 0;
+        cursor = GameObject.FindGameObjectWithTag("Cursor").GetComponent<CustomCursor>();
     }
 
-    private void Update()
+    void Update()
+    {
+        HideCursor();
+        CameraLook();
+    }
+
+    void HideCursor()
+    {
+        if (Cursor.visible)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+    }
+
+    void CameraLook()
     {
         if (Input.GetButton("Fire2"))
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            cursor.looking = true;
 
             cinemachine.m_YAxis.m_MaxSpeed = yAxisSpeed;
             cinemachine.m_XAxis.m_MaxSpeed = xAxisSpeed;
         }
         else
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            cursor.looking = false;
 
             cinemachine.m_YAxis.m_MaxSpeed = 0;
             cinemachine.m_XAxis.m_MaxSpeed = 0;

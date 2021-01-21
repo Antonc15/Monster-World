@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 8498747642259144293}
   m_Layer: 0
   m_Name: RedMushroom
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,6 +211,9 @@ MonoBehaviour:
   minClicks: 3
   maxClicks: 5
   roatateOnClick: 1
+  minPitch: 0.85
+  maxPitch: 1.25
+  onlyPitchForClick: 0
   clickSound: {fileID: 405398528782397202, guid: dd982ec78d24b034c8c5e880f9e5fdeb, type: 3}
   harvestSound: {fileID: 4530302399578041987, guid: ad1c8033b3f6aeb4ab5cf8259c2d9dcf, type: 3}
 --- !u!136 &4251415978274348961

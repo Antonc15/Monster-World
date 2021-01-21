@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 271744725}
   m_Layer: 0
   m_Name: StickPrefab1
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,9 +79,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ff3043991894946b43960326b7016b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minClicks: 3
-  maxClicks: 5
+  minClicks: 2
+  maxClicks: 3
   roatateOnClick: 0
+  minPitch: 0.85
+  maxPitch: 1.25
+  onlyPitchForClick: 1
   clickSound: {fileID: 8811254240783886986, guid: 3974fe91e785a8845bf181044866ac77, type: 3}
   harvestSound: {fileID: 8776754402181264925, guid: 47402d7b809945747b7aced9183b83fa, type: 3}
 --- !u!1 &5959235925303870426
